@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.6",
     "babel-preset-flow": "^6.23.0",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -30,7 +31,14 @@
   },
   "dependencies": {
     "expo": "^27.0.1",
+    "prop-types": "^15.6.2",
     "react": "16.3.1",
-    "react-native": "~0.55.2"
+    "react-native": "~0.55.2",
+    "react-native-button": "^2.3.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^3.2.1",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
+    "redux-saga": "^0.16.0"
   }
 }

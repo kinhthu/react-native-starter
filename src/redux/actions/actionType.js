@@ -1,0 +1,8 @@
+export const GET_POST = 'GET_POST';
+export const GET_POST_SUCCESS = 'GET_POST_SUCCESS';
+export const GET_POST_FAILED = 'GET_POST_FAILED';
+
+export const GET_POST_BY_ID = 'GET_POST_BY_ID';
+
+export const INCREASE = 'INCREASE';
+export const DECREASE = 'DECREASE';

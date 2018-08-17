@@ -1,23 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
-}
+// redux
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// redux saga
+import createSagaMiddleware from 'redux-saga';
+
+import rootReducer from './src/redux/reducers';
+import rootSaga from './src/redux/sagas';
+// import CounterContainer from './src/containers/counterContainer';
+import PostsContainer from './src/containers/postsContainer';
+
+// middleware
+const sagaMiddleware = createSagaMiddleware();
+
+
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+const App = () => (
+  <Provider store={store}>
+    <PostsContainer />
+  </Provider>
+);
+sagaMiddleware.run(rootSaga);
+export default App;
