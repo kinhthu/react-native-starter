@@ -1,23 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 
 import PropTypes from 'prop-types';
 
-const styles = StyleSheet.create({
-  container: {
-    margin: 10,
-    borderWidth: 1,
-    padding: 5,
-  },
-  titleStyle: {
-    color: 'green',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  bodyStyle: {
-
-  },
-});
+import styles from './styles';
 
 const PostItem = (props) => {
   const { title, body } = props;

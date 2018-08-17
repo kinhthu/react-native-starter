@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import CounterComponent from '../components/counterComponent';
-import { increase, decrease } from '../redux/actions';
+import CounterComponent from './counterComponent';
+import { increase, decrease } from '../../redux/actions';
 
 const mapStateToProps = state => ({
   count: state.countReducer.count,
