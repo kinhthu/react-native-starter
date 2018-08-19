@@ -20,6 +20,7 @@ const PostsComponent = (props) => {
       <FlatList
         data={posts}
         renderItem={({ item }) => <PostItem {...item} />}
+        keyExtractor={item => item.id.toString()}
       />
     </View>
   );

@@ -9,7 +9,6 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './src/redux/reducers';
 import rootSaga from './src/redux/sagas';
-// import CounterContainer from './src/containers/counterContainer';
 import PostsContainer from './src/pages/posts/postsContainer';
 
 // middleware
