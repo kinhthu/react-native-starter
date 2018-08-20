@@ -1,28 +1,35 @@
 import React from 'react';
-import Button from 'react-native-button';
+
 import {
-  View, Text, FlatList,
-} from 'react-native';
+  Container, Header, Content, Button, Text, List, ListItem, View,
+} from 'native-base';
 import PropTypes from 'prop-types';
 
 import PostItem from '../../components/postItem/postItem';
 import styles from './styles';
 
 const PostsComponent = (props) => {
-  const { container, buttons, button } = styles;
+  const { buttons, button } = styles;
   const { onGetPosts, posts } = props;
   return (
-    <View style={container}>
-      <Text>Post Component</Text>
+    <Container>
+      <Header />
       <View style={buttons}>
-        <Button style={button} onPress={() => { onGetPosts(); }}>Get Posts</Button>
+        <Button style={button} success onPress={() => { onGetPosts(); }}>
+          <Text> Get Posts </Text>
+        </Button>
       </View>
-      <FlatList
-        data={posts}
-        renderItem={({ item }) => <PostItem {...item} />}
-        keyExtractor={item => item.id.toString()}
-      />
-    </View>
+      <Content>
+        <List
+          dataArray={posts}
+          renderRow={item => (
+            <ListItem>
+              <PostItem {...item} />
+            </ListItem>
+          )}
+        />
+      </Content>
+    </Container>
   );
 };
 
