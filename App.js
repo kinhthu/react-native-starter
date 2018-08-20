@@ -9,7 +9,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './src/redux/reducers';
 import rootSaga from './src/redux/sagas';
-import PostsContainer from './src/pages/posts/postsContainer';
+import MainContainer from './src/pages/main/mainContainer';
 
 // middleware
 const sagaMiddleware = createSagaMiddleware();
@@ -19,7 +19,7 @@ const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 const App = () => (
   <Provider store={store}>
-    <PostsContainer />
+    <MainContainer />
   </Provider>
 );
 sagaMiddleware.run(rootSaga);
