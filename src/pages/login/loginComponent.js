@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-  Container, Header, Content, Button, Form, Item, Label, Input, Text, View,
+  Container, Header, Content, Button, Form, Item, Label, Input, Text, View, Spinner,
 } from 'native-base';
 
 import PropTypes from 'prop-types';
@@ -11,7 +11,7 @@ import styles from './styles';
 export default class LoginComponent extends Component {
   render() {
     const { button, buttonContainer } = styles;
-    const { onLogin } = this.props;
+    const { onLogin, isLogining } = this.props;
     return (
       <Container>
         <Header />
@@ -30,6 +30,7 @@ export default class LoginComponent extends Component {
                 <Text> Log In </Text>
               </Button>
             </View>
+            {isLogining && <Spinner color="green" />}
           </Form>
         </Content>
       </Container>
@@ -39,4 +40,5 @@ export default class LoginComponent extends Component {
 
 LoginComponent.propTypes = {
   onLogin: PropTypes.func.isRequired,
+  isLogining: PropTypes.bool.isRequired,
 };

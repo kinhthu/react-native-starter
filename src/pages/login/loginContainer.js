@@ -4,7 +4,7 @@ import LoginComponent from './loginComponent';
 import { startLogin } from '../../redux/actions/auth';
 
 const mapStateToProps = state => ({
-  // posts: state.postsReducer.posts,
+  isLogining: state.authReducer.isLogining,
 });
 
 const mapDispatchToProps = dispatch => ({
