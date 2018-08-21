@@ -1,4 +1,4 @@
-import { GET_POST_SUCCESS, GET_POST_FAILED, GET_POST_BY_ID } from '../actions/actionType';
+import { GET_POST_SUCCESS, GET_POST_FAILED, GET_POST_BY_ID } from '../actionType/posts';
 
 const initState = {
   posts: [],

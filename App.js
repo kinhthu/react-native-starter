@@ -13,7 +13,7 @@ import { Font, AppLoading } from 'expo';
 import rootReducer from './src/redux/reducers';
 import rootSaga from './src/redux/sagas';
 import MainContainer from './src/pages/main/mainContainer';
-// import PostsContainer from './src/pages/posts/postsContainer';
+
 // middleware
 const sagaMiddleware = createSagaMiddleware();
 

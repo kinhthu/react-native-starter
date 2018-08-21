@@ -2,8 +2,8 @@
 // @flow
 import { put, takeLatest } from 'redux-saga/effects';
 
-import { GET_POST } from '../actions/actionType';
-import { getPostsSuccess, getPostsFailed } from '../actions';
+import { GET_POST } from '../actionType/posts';
+import { getPostsSuccess, getPostsFailed } from '../actions/posts';
 import Api from './api';
 
 function* getPosts() {

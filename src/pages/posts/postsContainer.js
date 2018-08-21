@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import PostsComponent from './postsComponent';
-import { getPosts } from '../../redux/actions';
+import { getPosts } from '../../redux/actions/posts';
 
 const mapStateToProps = state => ({
   posts: state.postsReducer.posts,
