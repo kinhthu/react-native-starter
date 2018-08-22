@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   overlay: {
     position: 'absolute',
-    zIndex: 100,
+    zIndex: 1000,
     width,
     height,
     backgroundColor: 'rgba(0, 0, 0, 0.6)',

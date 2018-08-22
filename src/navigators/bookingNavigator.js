@@ -4,7 +4,12 @@ import ServiceDetailContainer from '../pages/serviceDetail/serviceDetailContaine
 
 const BookingNavigator = createStackNavigator(
   {
-    Booking: { screen: BookingContainer },
+    Booking: {
+      screen: BookingContainer,
+      navigationOptions: {
+        title: 'Booking',
+      },
+    },
     ServiceDetail: { screen: ServiceDetailContainer },
   },
 );

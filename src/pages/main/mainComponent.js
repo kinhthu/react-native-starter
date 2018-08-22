@@ -7,7 +7,7 @@ import {
 import PropTypes from 'prop-types';
 
 import getTheme from '../../../native-base-theme/components';
-import material from '../../../native-base-theme/variables/custom';
+import material from '../../../native-base-theme/variables/platform';
 import LoginContainer from '../login/loginContainer';
 import TabsNavigator from '../../navigators/tabsNavigator';
 

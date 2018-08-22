@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-  Container, Header, Left, Body, Title, Right,
-  Content, List, ListItem,
+  Container, Content, List, ListItem,
 } from 'native-base';
 import PropTypes from 'prop-types';
 
@@ -10,10 +9,6 @@ import { Loading, ServiceItem } from '../../components';
 // import styles from './styles';
 
 export default class BookingComponent extends Component {
-  static navigationOptions = {
-    title: 'Booking',
-  };
-
   componentDidMount() {
     this.props.onGetBooking();
   }
