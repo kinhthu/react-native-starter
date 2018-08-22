@@ -1,15 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  button: {
-    margin: 10,
-  },
-  buttonContainer: {
+  buttons: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  form: {
-    marginTop: '50%',
+  button: {
+    margin: 10,
+    padding: 10,
   },
 });
 
