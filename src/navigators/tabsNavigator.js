@@ -7,11 +7,12 @@ import {
 
 import BookingNavigator from './bookingNavigator';
 import PostsContainer from '../pages/posts/postsContainer';
+import CalendarContainer from '../pages/calendar/calendarContainer';
 
 const TabsNavigator = createMaterialTopTabNavigator(
   {
     Booking: { screen: BookingNavigator },
-    Tab1: { screen: PostsContainer },
+    Calendar: { screen: CalendarContainer },
     Tab2: { screen: BookingNavigator },
     Tab3: { screen: PostsContainer },
   },
@@ -26,9 +27,9 @@ const TabsNavigator = createMaterialTopTabNavigator(
             <Icon name="book" />
             <Text>Booking</Text>
           </Button>
-          <Button vertical active={props.navigationState.index === 1} onPress={() => { props.navigation.navigate('Tab1'); }}>
-            <Icon name="camera" />
-            <Text>Camera</Text>
+          <Button vertical active={props.navigationState.index === 1} onPress={() => { props.navigation.navigate('Calendar'); }}>
+            <Icon name="calendar" />
+            <Text>Calendar</Text>
           </Button>
           <Button vertical active={props.navigationState.index === 2} onPress={() => { props.navigation.navigate('Tab2'); }}>
             <Icon active name="navigate" />
