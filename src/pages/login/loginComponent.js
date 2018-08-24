@@ -16,7 +16,7 @@ export default class LoginComponent extends Component {
     return (
       <Container>
         <Content>
-          {isLogining && (<Loading />)}
+          <Loading loading={isLogining} />
           <Form style={form}>
             <Item floatingLabel>
               <Label>Username</Label>
@@ -27,7 +27,7 @@ export default class LoginComponent extends Component {
               <Input />
             </Item>
             <View style={buttonContainer}>
-              <Button style={button} success onPress={() => { onLogin(); }}>
+              <Button style={button} success onPress={onLogin}>
                 <Text> Log In </Text>
               </Button>
             </View>

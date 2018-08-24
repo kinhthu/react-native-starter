@@ -1,15 +1,22 @@
-import { StyleSheet, Dimensions } from 'react-native';
-
-const { width, height } = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  overlay: {
-    position: 'absolute',
-    zIndex: 1000,
-    width,
-    height,
+  modalBackground: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    justifyContent: 'center',
+  },
+  activityIndicatorWrapper: {
+    // backgroundColor: '#FFFFFF',
+    height: 80,
+    width: 80,
+    borderRadius: 10,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    zIndex: 1000,
   },
 });
 

@@ -13,7 +13,7 @@ export default class BookingComponent extends Component {
     this.props.onGetBooking();
   }
 
-  goToServiceDetail(item) {
+  goToServiceDetail = (item) => {
     this.props.navigation.navigate('ServiceDetail', { item });
   }
 
@@ -22,12 +22,12 @@ export default class BookingComponent extends Component {
     const { list } = this.props;
     return (
       <Container>
-        {list.length === 0 && <Loading />}
+        <Loading loading={list.length === 0} />
         <Content>
           <List
             dataArray={list}
             renderRow={item => (
-              <ListItem onPress={() => { this.goToServiceDetail(item); }}>
+              <ListItem onPress={() => this.goToServiceDetail(item)}>
                 <ServiceItem {...item} />
               </ListItem>
             )}

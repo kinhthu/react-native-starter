@@ -12,17 +12,12 @@ import CalendarPicker from 'react-native-calendar-picker';
 import styles from './styles';
 
 export default class CalendarComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.onDateChange = this.onDateChange.bind(this);
-  }
-
   state = {
     selectedStartDate: null,
     selectedEndDate: null,
   };
 
-  onDateChange(date, type) {
+  onDateChange = (date, type) => {
     if (type === 'END_DATE') {
       this.setState({
         selectedEndDate: date,
