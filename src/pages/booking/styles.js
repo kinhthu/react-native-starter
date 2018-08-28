@@ -1,13 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  buttons: {
+  costStype: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    margin: 10,
+  },
+  bookStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    margin: 20,
   },
   button: {
-    margin: 10,
-    padding: 10,
+    width: '60%',
   },
 });
 

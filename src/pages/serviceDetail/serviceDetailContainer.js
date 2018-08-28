@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import ServiceDetailComponent from './serviceDetailComponent';
-import { startGetListService } from '../../redux/actions/booking';
+import { bookService } from '../../redux/actions/booking';
 
 const mapStateToProps = state => ({
   // list: state.bookingReducer.list,
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // onGetBooking: () => dispatch(startGetListService()),
+  onBookService: id => dispatch(bookService(id)),
 });
 
 const ServiceDetailContainer = connect(mapStateToProps, mapDispatchToProps)(ServiceDetailComponent);

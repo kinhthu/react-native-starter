@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 import {
-  Container, Content, List, ListItem,
+  Container, Content, List, ListItem, View, Text, Button,
 } from 'native-base';
 import PropTypes from 'prop-types';
 
 import { Loading, ServiceItem } from '../../components';
-// import styles from './styles';
+import styles from './styles';
 
 export default class BookingComponent extends Component {
   componentDidMount() {
@@ -17,9 +17,15 @@ export default class BookingComponent extends Component {
     this.props.navigation.navigate('ServiceDetail', { item });
   }
 
+  onBookAllService = () => {
+    console.log('Book all service!');
+  }
+
   render() {
-    // const { buttons, button } = styles;
-    const { list } = this.props;
+    const { costStype, bookStyle, button } = styles;
+    const {
+      list, totalCost, isLoading, onBookService,
+    } = this.props;
     return (
       <Container>
         <Loading loading={list.length === 0} />
@@ -28,11 +34,29 @@ export default class BookingComponent extends Component {
             dataArray={list}
             renderRow={item => (
               <ListItem onPress={() => this.goToServiceDetail(item)}>
-                <ServiceItem {...item} />
+                <ServiceItem {...item} onChecking={onBookService} />
               </ListItem>
             )}
           />
         </Content>
+        {!isLoading && (
+          <View>
+            <View style={costStype}>
+              <Text>Total Cost: {totalCost}</Text>
+            </View>
+            <View style={bookStyle}>
+              <Button
+                style={button}
+                success
+                block
+                disabled={totalCost === 0}
+                onPress={this.onBookAllService}
+              >
+                <Text> Book </Text>
+              </Button>
+            </View>
+          </View>
+        )}
       </Container>
     );
   }

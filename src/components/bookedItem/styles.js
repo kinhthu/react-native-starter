@@ -1,13 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
-    padding: 5,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    // width,
   },
   nameStyle: {
     color: 'green',
@@ -18,10 +13,14 @@ const styles = StyleSheet.create({
   priceStyle: {
     color: 'gray',
   },
-  checkBox: {
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    marginRight: 20,
+  buttons: {
+    flexDirection: 'row',
+    height: '100%',
+  },
+  button: {
+    height: '100%',
+    padding: 15,
+    borderRadius: 0,
   },
 });
 

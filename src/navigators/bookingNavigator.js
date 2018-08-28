@@ -10,7 +10,12 @@ const BookingNavigator = createStackNavigator(
         title: 'Booking',
       },
     },
-    ServiceDetail: { screen: ServiceDetailContainer },
+    ServiceDetail: {
+      screen: ServiceDetailContainer,
+      navigationOptions: {
+        title: 'Service Detail',
+      },
+    },
   },
 );
 

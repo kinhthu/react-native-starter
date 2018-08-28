@@ -8,17 +8,19 @@ import {
 import BookingNavigator from './bookingNavigator';
 import PostsContainer from '../pages/posts/postsContainer';
 import CalendarContainer from '../pages/calendar/calendarContainer';
-import CameraContainer from '../pages/camera/cameraContainer';
+// import CameraContainer from '../pages/camera/cameraContainer';
+import BookedContainer from '../pages/booked/bookedContainer';
 
 const TabsNavigator = createMaterialTopTabNavigator(
   {
     Booking: { screen: BookingNavigator },
+    Booked: { screen: BookedContainer },
     Calendar: { screen: CalendarContainer },
-    Camera: { screen: CameraContainer },
     Tab3: { screen: PostsContainer },
   },
   {
     tabBarPosition: 'bottom',
+    swipeEnabled: false,
     tabBarComponent: props => (
       <Footer>
         <FooterTab>
@@ -28,13 +30,13 @@ const TabsNavigator = createMaterialTopTabNavigator(
             <Icon name="book" />
             <Text>Booking</Text>
           </Button>
-          <Button vertical active={props.navigationState.index === 1} onPress={() => { props.navigation.navigate('Calendar'); }}>
+          <Button vertical active={props.navigationState.index === 1} onPress={() => { props.navigation.navigate('Booked'); }}>
+            <Icon active name="bookmarks" />
+            <Text>Booked</Text>
+          </Button>
+          <Button vertical active={props.navigationState.index === 2} onPress={() => { props.navigation.navigate('Calendar'); }}>
             <Icon name="calendar" />
             <Text>Calendar</Text>
-          </Button>
-          <Button vertical active={props.navigationState.index === 2} onPress={() => { props.navigation.navigate('Camera'); }}>
-            <Icon active name="camera" />
-            <Text>Camera</Text>
           </Button>
           <Button vertical active={props.navigationState.index === 3} onPress={() => { props.navigation.navigate('Tab3'); }}>
             <Icon name="person" />

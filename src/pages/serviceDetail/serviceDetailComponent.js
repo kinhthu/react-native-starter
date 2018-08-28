@@ -9,15 +9,26 @@ import PropTypes from 'prop-types';
 // import styles from './styles';
 
 export default class ServiceDetailComponent extends Component {
-  static navigationOptions = () => ({
-    // title: navigation.state.params.item.name,
-    title: 'Service Detail',
-  });
+  constructor(props) {
+    super(props);
 
-  state = {
-    selectedDoctor: undefined,
-    selectedAppointment: undefined,
-  };
+    this.state = {
+      selectedDoctor: undefined,
+      selectedAppointment: undefined,
+    };
+  }
+
+  componentDidMount() {
+    const {
+      doctor, appointment,
+    } = this.props.navigation.getParam('item');
+    if (doctor && appointment) {
+      this.setState({
+        selectedDoctor: doctor,
+        selectedAppointment: appointment,
+      });
+    }
+  }
 
   onValueChangeDoctor(value) {
     this.setState({
@@ -29,6 +40,13 @@ export default class ServiceDetailComponent extends Component {
     this.setState({
       selectedAppointment: value,
     });
+  }
+
+  onBookService = (id, selectedDoctor, selectedAppointment) => {
+    const { onBookService, navigation } = this.props;
+
+    onBookService({ id, selectedDoctor, selectedAppointment });
+    navigation.pop();
   }
 
   renderSelectDoctor(doctors) {
@@ -48,7 +66,7 @@ export default class ServiceDetailComponent extends Component {
           {doctors.map((item, index) => (
             <Picker.Item
               label={item.name}
-              value={item.name}
+              value={item.id}
               key={index.toString()}
             />))}
         </Picker>
@@ -73,7 +91,7 @@ export default class ServiceDetailComponent extends Component {
           {available.map((item, index) => (
             <Picker.Item
               label={`${item.start} - ${item.end}`}
-              value={`key${index}`}
+              value={item.id}
               key={index.toString()}
             />))}
         </Picker>
@@ -84,12 +102,13 @@ export default class ServiceDetailComponent extends Component {
   render() {
     // const { buttons, button } = styles;
     const {
-      name, description, price, doctors,
+      name, description, price, doctors, id,
     } = this.props.navigation.getParam('item');
+    const { selectedAppointment, selectedDoctor } = this.state;
 
     const currentTimeList = [];
-    if (this.state.selectedDoctor) {
-      const currentDoctor = doctors.find(d => d.name === this.state.selectedDoctor);
+    if (selectedDoctor) {
+      const currentDoctor = doctors.find(d => d.id === selectedDoctor);
       if (currentDoctor) {
         currentTimeList.push(...currentDoctor.available);
       }
@@ -112,9 +131,9 @@ export default class ServiceDetailComponent extends Component {
                   success
                   block
                   disabled={!this.state.selectedAppointment}
-                  onPress={() => { this.props.navigation.pop(); }}
+                  onPress={() => { this.onBookService(id, selectedDoctor, selectedAppointment); }}
                 >
-                  <Text> Book </Text>
+                  <Text> Select </Text>
                 </Button>
               </Body>
             </CardItem>
@@ -129,4 +148,5 @@ ServiceDetailComponent.propTypes = {
   // onGetBooking: PropTypes.func.isRequired,
   // list: PropTypes.array,
   navigation: PropTypes.object,
+  onBookService: PropTypes.func,
 };

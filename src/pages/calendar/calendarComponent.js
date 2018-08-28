@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-  Text,
-  View,
+  Text, View, Fab, Icon,
 } from 'native-base';
 
 import CalendarPicker from 'react-native-calendar-picker';
@@ -31,14 +30,15 @@ export default class CalendarComponent extends Component {
   }
 
   render() {
-    const { selectedStartDate, selectedEndDate } = this.state;
+    const { selectedStartDate, selectedEndDate, active } = this.state;
+    const { fabButton, container } = styles;
     const minDate = new Date(); // Today
     const maxDate = new Date(2030, 6, 3);
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
     const endDate = selectedEndDate ? selectedEndDate.toString() : '';
 
     return (
-      <View style={styles.container}>
+      <View style={container}>
         <CalendarPicker
           startFromMonday
           allowRangeSelection
@@ -53,6 +53,17 @@ export default class CalendarComponent extends Component {
         <View>
           <Text>SELECTED START DATE:{ startDate }</Text>
           <Text>SELECTED END DATE:{ endDate }</Text>
+        </View>
+        <View style={fabButton}>
+          <Fab
+            direction="up"
+            containerStyle={{ }}
+            style={{ backgroundColor: '#5067FF' }}
+            position="bottomRight"
+            onPress={() => { alert('Add!'); }}
+          >
+            <Icon name="add" style={{ fontSize: 40, padding: 20 }} />
+          </Fab>
         </View>
       </View>
     );
