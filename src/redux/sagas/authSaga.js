@@ -3,14 +3,13 @@
 import { put, takeLatest } from 'redux-saga/effects';
 
 import { START_LOGIN } from '../actionType/auth';
-import { logining, loginSuccess, loginFailed } from '../actions/auth';
+import { loginSuccess, loginFailed } from '../actions/auth';
 // import Api from './api';
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 function* login() {
   try {
-    yield put(logining());
     console.log('logining');
     yield delay(1000);
     console.log('logged');

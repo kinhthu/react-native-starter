@@ -16,6 +16,7 @@ export default class ServiceDetailComponent extends Component {
       selectedDoctor: undefined,
       selectedAppointment: undefined,
     };
+    props.loadDoctors();
   }
 
   componentDidMount() {
@@ -31,6 +32,7 @@ export default class ServiceDetailComponent extends Component {
   }
 
   onValueChangeDoctor(value) {
+    this.props.loadAppointments();
     this.setState({
       selectedDoctor: value,
     });
@@ -43,9 +45,9 @@ export default class ServiceDetailComponent extends Component {
   }
 
   onBookService = (id, selectedDoctor, selectedAppointment) => {
-    const { onBookService, navigation } = this.props;
+    const { onSelectService, navigation } = this.props;
 
-    onBookService({ id, selectedDoctor, selectedAppointment });
+    onSelectService({ id, selectedDoctor, selectedAppointment });
     navigation.pop();
   }
 
@@ -102,17 +104,11 @@ export default class ServiceDetailComponent extends Component {
   render() {
     // const { buttons, button } = styles;
     const {
-      name, description, price, doctors, id,
+      name, description, price, id,
     } = this.props.navigation.getParam('item');
     const { selectedAppointment, selectedDoctor } = this.state;
 
-    const currentTimeList = [];
-    if (selectedDoctor) {
-      const currentDoctor = doctors.find(d => d.id === selectedDoctor);
-      if (currentDoctor) {
-        currentTimeList.push(...currentDoctor.available);
-      }
-    }
+    const { doctors, appointments } = this.props;
 
     return (
       <Container>
@@ -125,7 +121,7 @@ export default class ServiceDetailComponent extends Component {
                 <Text>Price: {price}</Text>
                 <Form>
                   {this.renderSelectDoctor(doctors)}
-                  {this.state.selectedDoctor && this.renderSelectAppointment(currentTimeList)}
+                  {this.state.selectedDoctor && this.renderSelectAppointment(appointments)}
                 </Form>
                 <Button
                   success
@@ -146,7 +142,10 @@ export default class ServiceDetailComponent extends Component {
 
 ServiceDetailComponent.propTypes = {
   // onGetBooking: PropTypes.func.isRequired,
-  // list: PropTypes.array,
+  doctors: PropTypes.array,
   navigation: PropTypes.object,
-  onBookService: PropTypes.func,
+  appointments: PropTypes.array,
+  onSelectService: PropTypes.func,
+  loadDoctors: PropTypes.func,
+  loadAppointments: PropTypes.func,
 };

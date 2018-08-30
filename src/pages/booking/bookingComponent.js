@@ -10,7 +10,7 @@ import styles from './styles';
 
 export default class BookingComponent extends Component {
   componentDidMount() {
-    this.props.onGetBooking();
+    this.props.onGetServices();
   }
 
   goToServiceDetail = (item) => {
@@ -18,13 +18,14 @@ export default class BookingComponent extends Component {
   }
 
   onBookAllService = () => {
-    console.log('Book all service!');
+    const data = this.props.list.filter(i => i.booked);
+    this.props.onBookServices(data);
   }
 
   render() {
     const { costStype, bookStyle, button } = styles;
     const {
-      list, totalCost, isLoading, onBookService,
+      list, totalCost, isLoading, onSelectService,
     } = this.props;
     return (
       <Container>
@@ -34,7 +35,7 @@ export default class BookingComponent extends Component {
             dataArray={list}
             renderRow={item => (
               <ListItem onPress={() => this.goToServiceDetail(item)}>
-                <ServiceItem {...item} onChecking={onBookService} />
+                <ServiceItem {...item} onChecking={onSelectService} />
               </ListItem>
             )}
           />
@@ -63,6 +64,7 @@ export default class BookingComponent extends Component {
 }
 
 BookingComponent.propTypes = {
-  onGetBooking: PropTypes.func.isRequired,
+  onGetServices: PropTypes.func.isRequired,
+  onBookServices: PropTypes.func.isRequired,
   list: PropTypes.array,
 };

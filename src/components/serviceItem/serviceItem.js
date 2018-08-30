@@ -19,9 +19,20 @@ const ServiceItem = (props) => {
         <Text style={nameStyle}>Service: {name}</Text>
         <Text style={priceStyle}>Price: {price} VND</Text>
       </View>
+      {booked && (
       <View style={checkBox}>
-        <CheckBox onPress={() => onChecking({ id })} checked={booked} />
+        <CheckBox
+          onPress={() => {
+            if (booked) {
+              onChecking({ id });
+            }
+          }
+        }
+          checked
+        />
       </View>
+      )
+    }
     </View>
   );
 };

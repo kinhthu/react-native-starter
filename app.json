@@ -1,6 +1,16 @@
 {
   "expo": {
+    "name": "Doctor Booking",
+    "icon": "./src/assets/doctor.png",
+    "version": "1.0.0",
+    "slug": "expo.io/@logixdev/native-component-list",
     "sdkVersion": "27.0.0",
+    "ios": {
+      "bundleIdentifier": "com.logixtek.doctor.booking"
+    },
+    "android": {
+      "package": "com.logixtek.doctor.booking"
+    },
     "splash": {
       "image": "./src/assets/splash.png",
       "resizeMode": "cover"

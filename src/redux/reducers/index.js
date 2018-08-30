@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import postsReducer from './postsReducer';
 import authReducer from './authReducer';
-import bookingReducer from './bookingReducer';
+import serviceReducer from './serviceReducer';
+import doctorReducer from './doctorReducer';
+import appointmentReducer from './appointmentReducer';
 
 const rootReducer = combineReducers({
-  postsReducer, authReducer, bookingReducer,
+  authReducer, serviceReducer, doctorReducer, appointmentReducer,
 });
 export default rootReducer;

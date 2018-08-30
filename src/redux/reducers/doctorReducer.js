@@ -1,19 +1,19 @@
-import * as Booking from '../actionType/booking';
+import * as Doctor from '../actionType/doctor';
 
 const initState = {
+  list: [],
   isLoading: false,
-  message: '',
 };
 
 const doctorReducer = (state = initState, action) => {
   switch (action.type) {
-    case Booking.START_BOOKING:
+    case Doctor.START_GET_LIST_DOCTOR:
       return { ...state, isLoading: true };
-    case Booking.BOOKING_SUCCESS:
+    case Doctor.GET_LIST_DOCTOR_SUCCESS:
       return {
-        ...state, isLoading: false, message: action.message,
+        ...state, isLoading: false, list: action.list,
       };
-    case Booking.BOOKING_FAILED:
+    case Doctor.GET_LIST_DOCTOR_FAILED:
       return { ...state, isLoading: false };
     default:
       return state;

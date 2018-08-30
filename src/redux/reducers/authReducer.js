@@ -1,5 +1,5 @@
 import {
-  LOGINING, LOGIN_SUCCESS, LOGIN_FAILED,
+  START_LOGIN, LOGIN_SUCCESS, LOGIN_FAILED,
 } from '../actionType/auth';
 
 const initState = {
@@ -10,7 +10,7 @@ const initState = {
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
-    case LOGINING:
+    case START_LOGIN:
       return { ...state, isLogining: true };
     case LOGIN_SUCCESS:
       return {

@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 
 import BookedComponent from './bookedComponent';
-import { startGetListService, bookService } from '../../redux/actions/booking';
+import { startGetListService, bookService } from '../../redux/actions/service';
 
 const mapStateToProps = state => ({
-  list: state.bookingReducer.list,
+  list: state.serviceReducer.list,
 });
 
 const mapDispatchToProps = dispatch => ({

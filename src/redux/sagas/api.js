@@ -1,15 +1,41 @@
+import * as ApiFetch from './util';
+
 /* eslint no-underscore-dangle: 0 */
-const getPostsUrl = 'https://jsonplaceholder.typicode.com/posts';
+const API_URL = {
+  getAllService: 'http://172.16.0.113:3000/api/services',
+  getAllDoctor: 'http://172.16.0.113:3000/api/doctors',
+  getAllAppointment: 'http://172.16.0.113:3000/api/appointments',
+  bookService: 'http://172.16.0.113:3000/api/bookings/list',
+};
 
-function* getPostsFromApi() {
-  const response = yield fetch(getPostsUrl);
-  const posts = yield response.status === 200 ? response.json() : [];
+function* getServices() {
+  const services = yield ApiFetch.get(API_URL.getAllService);
 
-  return posts;
+  return services;
+}
+
+function* getDoctors() {
+  const doctors = yield ApiFetch.get(API_URL.getAllDoctor);
+
+  return doctors;
+}
+
+function* getAppointments() {
+  const appointments = yield ApiFetch.get(API_URL.getAllAppointment);
+
+  return appointments;
+}
+
+function* bookingService(bookingData) {
+  const response = yield ApiFetch.post(API_URL.bookService, bookingData);
+  return response;
 }
 
 const Api = {
-  getPostsFromApi,
+  getServices,
+  getDoctors,
+  getAppointments,
+  bookingService,
 };
 
 export default Api;

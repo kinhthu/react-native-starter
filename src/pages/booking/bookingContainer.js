@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
 
 import BookingComponent from './bookingComponent';
-import { startGetListService, bookService } from '../../redux/actions/booking';
+import { startGetListService, selectService } from '../../redux/actions/service';
+import { startBooking } from '../../redux/actions/booking';
 
 const mapStateToProps = state => ({
-  list: state.bookingReducer.list,
-  isLoading: state.bookingReducer.isLoading,
-  totalCost: state.bookingReducer.totalCost,
+  list: state.serviceReducer.list,
+  isLoading: state.serviceReducer.isLoading,
+  totalCost: state.serviceReducer.totalCost,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onGetBooking: () => dispatch(startGetListService()),
-  onBookService: id => dispatch(bookService(id)),
+  onGetServices: () => dispatch(startGetListService()),
+  onSelectService: id => dispatch(selectService(id)),
+  onBookServices: data => dispatch(startBooking(data)),
 });
 
 const BookingContainer = connect(mapStateToProps, mapDispatchToProps)(BookingComponent);

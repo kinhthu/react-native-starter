@@ -6,9 +6,8 @@ import {
 } from 'native-base';
 
 import BookingNavigator from './bookingNavigator';
-import PostsContainer from '../pages/posts/postsContainer';
 import CalendarContainer from '../pages/calendar/calendarContainer';
-// import CameraContainer from '../pages/camera/cameraContainer';
+import CameraContainer from '../pages/camera/cameraContainer';
 import BookedContainer from '../pages/booked/bookedContainer';
 
 const TabsNavigator = createMaterialTopTabNavigator(
@@ -16,7 +15,7 @@ const TabsNavigator = createMaterialTopTabNavigator(
     Booking: { screen: BookingNavigator },
     Booked: { screen: BookedContainer },
     Calendar: { screen: CalendarContainer },
-    Tab3: { screen: PostsContainer },
+    Tab3: { screen: CameraContainer },
   },
   {
     tabBarPosition: 'bottom',
