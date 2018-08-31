@@ -13,7 +13,7 @@ const serviceReducer = (state = initState, action) => {
       return { ...state, isLoading: true };
     case Service.GET_LIST_SERVICE_SUCCESS:
       return {
-        ...state, isLoading: false, list: action.list,
+        ...state, isLoading: false, list: action.list, totalCost: 0,
       };
     case Service.GET_LIST_SERVICE_FAILED:
       return { ...state, isLoading: false };

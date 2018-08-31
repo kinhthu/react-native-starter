@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // redux
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-
+import { Root } from 'native-base';
 // redux saga
 import createSagaMiddleware from 'redux-saga';
 
@@ -44,9 +44,11 @@ export default class App extends Component {
 
     if (fontLoaded) {
       return (
-        <Provider store={store}>
-          <MainContainer />
-        </Provider>
+        <Root>
+          <Provider store={store}>
+            <MainContainer />
+          </Provider>
+        </Root>
       );
     }
     return (

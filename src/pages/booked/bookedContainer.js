@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 
 import BookedComponent from './bookedComponent';
-import { startGetListService, bookService } from '../../redux/actions/service';
+import { startGetBooked, startDeleteBooked } from '../../redux/actions/booking';
 
 const mapStateToProps = state => ({
-  list: state.serviceReducer.list,
+  list: state.bookingReducer.bookedList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onGetBooking: () => dispatch(startGetListService()),
-  // onBookService: id => dispatch(bookService(id)),
+  onGetBookedServices: () => dispatch(startGetBooked()),
+  onDeleteBooked: id => dispatch(startDeleteBooked(id)),
 });
 
 const BookedContainer = connect(mapStateToProps, mapDispatchToProps)(BookedComponent);

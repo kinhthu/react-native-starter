@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text, CheckBox, SwipeRow, Button, Icon,
+  View, Text, SwipeRow, Button, Icon,
 } from 'native-base';
 
 import PropTypes from 'prop-types';
@@ -9,7 +9,7 @@ import styles from './styles';
 
 const BookedItem = (props) => {
   const {
-    name, price, booked, onChecking, id,
+    name, price, onEdit, onDelete,
   } = props;
   const {
     container, nameStyle, priceStyle, buttons, button,
@@ -28,10 +28,10 @@ const BookedItem = (props) => {
 )}
         right={(
           <View style={buttons}>
-            <Button style={button} success onPress={() => alert('Edit')}>
+            <Button style={button} success onPress={() => onEdit()}>
               <Icon active name="brush" />
             </Button>
-            <Button style={button} danger onPress={() => alert('Trash')}>
+            <Button style={button} danger onPress={() => onDelete()}>
               <Icon active name="trash" />
             </Button>
           </View>
@@ -44,9 +44,8 @@ const BookedItem = (props) => {
 BookedItem.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
-  booked: PropTypes.bool,
-  onChecking: PropTypes.func,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
 export default BookedItem;

@@ -4,7 +4,7 @@ import watchLogin from './authSaga';
 import watchGetListService from './serviceSaga';
 import watchGetListDoctor from './doctorSaga';
 import watchGetListAppointment from './appointmentSaga';
-import watchGetBooking from './bookingSaga';
+import { watchGetBooking, watchGetBookedList, watchDeleteBooked } from './bookingSaga';
 
 export default function* rootSaga() {
   yield all([
@@ -13,5 +13,7 @@ export default function* rootSaga() {
     fork(watchGetListDoctor),
     fork(watchGetListAppointment),
     fork(watchGetBooking),
+    fork(watchGetBookedList),
+    fork(watchDeleteBooked),
   ]);
 }

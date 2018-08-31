@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-  Container, Content, List, ListItem, View, Text, Button,
+  Container, Content, List, ListItem, View, Text, Button, Toast,
 } from 'native-base';
 import PropTypes from 'prop-types';
 
@@ -13,6 +13,19 @@ export default class BookingComponent extends Component {
     this.props.onGetServices();
   }
 
+  componentWillReceiveProps() {
+    const { message, error, onClearMessage } = this.props;
+    if (message !== '' || error !== '') {
+      Toast.show({
+        text: message + error,
+        buttonText: 'Okay',
+        position: 'top',
+        duration: 3000,
+      });
+      onClearMessage();
+    }
+  }
+
   goToServiceDetail = (item) => {
     this.props.navigation.navigate('ServiceDetail', { item });
   }
@@ -22,11 +35,14 @@ export default class BookingComponent extends Component {
     this.props.onBookServices(data);
   }
 
+
   render() {
     const { costStype, bookStyle, button } = styles;
     const {
       list, totalCost, isLoading, onSelectService,
     } = this.props;
+
+
     return (
       <Container>
         <Loading loading={list.length === 0} />

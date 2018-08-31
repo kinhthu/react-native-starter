@@ -5,12 +5,17 @@ import {
 } from 'native-base';
 import PropTypes from 'prop-types';
 
-import { Loading, BookedItem } from '../../components';
+import { BookedItem } from '../../components';
 import styles from './styles';
 
 export default class BookingComponent extends Component {
   componentDidMount() {
-    this.props.onGetBooking();
+    this.props.onGetBookedServices();
+  }
+
+
+  goToServiceDetail = (item) => {
+    this.props.navigation.navigate('ServiceDetail', { item });
   }
 
   goToServiceDetail = (item) => {
@@ -20,16 +25,20 @@ export default class BookingComponent extends Component {
   render() {
     const { container } = styles;
     const {
-      list,
+      list, onDeleteBooked,
     } = this.props;
     return (
       <Container style={container}>
-        <Loading loading={list.length === 0} />
-        <Content scrollEnabled={false}>
+        {/* <Loading loading={list.length === 0} /> */}
+        <Content>
           <List
             dataArray={list}
             renderRow={item => (
-              <BookedItem {...item} />
+              <BookedItem
+                {...item.service}
+                onEdit={() => onDeleteBooked(item.id)}
+                onDelete={() => onDeleteBooked(item.id)}
+              />
             )}
           />
         </Content>
@@ -39,6 +48,7 @@ export default class BookingComponent extends Component {
 }
 
 BookingComponent.propTypes = {
-  onGetBooking: PropTypes.func.isRequired,
+  onGetBookedServices: PropTypes.func.isRequired,
+  onDeleteBooked: PropTypes.func.isRequired,
   list: PropTypes.array,
 };

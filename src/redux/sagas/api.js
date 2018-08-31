@@ -5,7 +5,9 @@ const API_URL = {
   getAllService: 'http://172.16.0.113:3000/api/services',
   getAllDoctor: 'http://172.16.0.113:3000/api/doctors',
   getAllAppointment: 'http://172.16.0.113:3000/api/appointments',
-  bookService: 'http://172.16.0.113:3000/api/bookings/list',
+  bookService: 'http://172.16.0.113:3000/api/bookings/book',
+  getBookedServices: 'http://172.16.0.113:3000/api/bookings/bookeds',
+  bookingDelete: 'http://172.16.0.113:3000/api/bookings/delete',
 };
 
 function* getServices() {
@@ -31,11 +33,23 @@ function* bookingService(bookingData) {
   return response;
 }
 
+function* getBookedServices(username) {
+  const response = yield ApiFetch.get(`${API_URL.getBookedServices}/${username}`);
+  return response;
+}
+
+function* deleteBooked(id) {
+  const response = yield ApiFetch.post(`${API_URL.bookingDelete}/${id}`);
+  return response;
+}
+
 const Api = {
   getServices,
   getDoctors,
   getAppointments,
   bookingService,
+  getBookedServices,
+  deleteBooked,
 };
 
 export default Api;
